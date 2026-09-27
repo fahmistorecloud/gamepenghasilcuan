@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🔧 Maintenance - Bubble Pop Mania</title>
   <style>
+    /* ============================================ */
+    /*  RESET & BASE                                */
+    /* ============================================ */
     * {
       margin: 0;
       padding: 0;
@@ -55,6 +58,9 @@
       to { background-position: 200px 200px; }
     }
 
+    /* ============================================ */
+    /*  CONTAINER                                   */
+    /* ============================================ */
     .container {
       position: relative;
       z-index: 1;
@@ -75,7 +81,9 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Icon gear berputar */
+    /* ============================================ */
+    /*  GEAR ICON                                   */
+    /* ============================================ */
     .gear-icon {
       font-size: 100px;
       display: inline-block;
@@ -89,13 +97,15 @@
       to { transform: rotate(360deg); }
     }
 
+    /* ============================================ */
+    /*  TITLE                                       */
+    /* ============================================ */
     h1 {
       font-size: 32px;
       margin-bottom: 15px;
       background: linear-gradient(90deg, #00f5ff, #ff00e5, #ffea00);
       background-size: 200% auto;
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       -webkit-text-fill-color: transparent;
       animation: shine 2s linear infinite;
       letter-spacing: 1px;
@@ -105,6 +115,9 @@
       to { background-position: 200% center; }
     }
 
+    /* ============================================ */
+    /*  MESSAGE                                     */
+    /* ============================================ */
     .message {
       font-size: 16px;
       color: #ccc;
@@ -118,7 +131,9 @@
       font-size: 18px;
     }
 
-    /* Kartu info waktu */
+    /* ============================================ */
+    /*  TIME CARD                                   */
+    /* ============================================ */
     .time-card {
       background: rgba(0, 0, 0, 0.5);
       border: 2px solid rgba(0, 245, 255, 0.3);
@@ -150,7 +165,9 @@
       font-family: 'Courier New', monospace;
     }
 
-    /* Progress bar */
+    /* ============================================ */
+    /*  PROGRESS BAR                                */
+    /* ============================================ */
     .progress-wrap {
       margin-bottom: 25px;
     }
@@ -177,8 +194,7 @@
       height: 100%;
       background: linear-gradient(90deg, #00f5ff, #ff00e5);
       border-radius: 10px;
-      width: 0%;
-      transition: width 1s ease-out;
+      width: 40%;
       box-shadow: 0 0 15px rgba(0, 245, 255, 0.8);
       position: relative;
       overflow: hidden;
@@ -200,7 +216,9 @@
       to { transform: translateX(100%); }
     }
 
-    /* Info tambahan */
+    /* ============================================ */
+    /*  INFO BOX                                    */
+    /* ============================================ */
     .info-box {
       background: rgba(255, 234, 0, 0.1);
       border-left: 4px solid #ffea00;
@@ -217,7 +235,9 @@
       color: #ffea00;
     }
 
-    /* Footer */
+    /* ============================================ */
+    /*  FOOTER                                      */
+    /* ============================================ */
     .footer {
       font-size: 12px;
       color: #666;
@@ -233,23 +253,57 @@
       margin-bottom: 5px;
     }
 
-    /* Responsive */
+    /* ============================================ */
+    /*  MUSIC BUTTON                                */
+    /* ============================================ */
+    .music-btn {
+      margin-top: 20px;
+      padding: 12px 24px;
+      border-radius: 50px;
+      border: 2px solid rgba(0, 245, 255, 0.4);
+      background: rgba(0, 0, 0, 0.4);
+      color: #00f5ff;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: inherit;
+      letter-spacing: 1px;
+    }
+
+    .music-btn:hover {
+      background: rgba(0, 245, 255, 0.15);
+      box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+      transform: scale(1.05);
+    }
+
+    .music-btn.playing {
+      color: #ffea00;
+      border-color: rgba(255, 234, 0, 0.5);
+      background: rgba(255, 234, 0, 0.1);
+      animation: musicPulse 2s ease-in-out infinite;
+    }
+
+    .music-btn.playing:hover {
+      background: rgba(255, 234, 0, 0.2);
+      box-shadow: 0 0 20px rgba(255, 234, 0, 0.6);
+    }
+
+    @keyframes musicPulse {
+      0%, 100% { box-shadow: 0 0 0 rgba(255, 234, 0, 0); }
+      50%      { box-shadow: 0 0 25px rgba(255, 234, 0, 0.6); }
+    }
+
+    /* ============================================ */
+    /*  RESPONSIVE                                  */
+    /* ============================================ */
     @media (max-width: 500px) {
-      .container {
-        padding: 40px 25px;
-      }
-      .gear-icon {
-        font-size: 80px;
-      }
-      h1 {
-        font-size: 24px;
-      }
-      .message {
-        font-size: 14px;
-      }
-      .time-value {
-        font-size: 32px;
-      }
+      .container { padding: 40px 25px; }
+      .gear-icon { font-size: 80px; }
+      h1 { font-size: 24px; }
+      .message { font-size: 14px; }
+      .time-value { font-size: 32px; }
+      .music-btn { font-size: 13px; padding: 10px 18px; }
     }
   </style>
 </head>
@@ -263,31 +317,33 @@
 
     <p class="message">
       Mohon maaf, server sedang dalam perbaikan.<br>
-      Kami akan kembali <strong>jam 8 pagi</strong> hari ini.
+      Kami akan kembali <strong>jam 10:00 pagi</strong> besok.
     </p>
 
     <div class="time-card">
       <div class="time-label">⏰ Kembali Online Jam</div>
-      <div class="time-value" id="targetTime">8:00</div>
+      <div class="time-value" id="targetTime">10:00:00</div>
     </div>
 
     <div class="progress-wrap">
       <div class="progress-label">
         <span>📊 Progress Update</span>
-        <span id="progressText">0%</span>
+        <span id="progressText">40%</span>
       </div>
       <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
+        <div class="progress-fill"></div>
       </div>
     </div>
 
     <div class="info-box">
       <strong>📢 Informasi:</strong><br>
-      • Server akan diupdate dengan fitur baru<br>
-      • Data user lo <strong>aman</strong>, gak akan hilang<br>
+      • Server sedang diupdate dengan fitur baru<br>
+      • Data user lo <strong>aman</strong>, tidak akan hilang<br>
       • Live chat tetap aktif jika ada kendala<br>
       • Pantau terus ya, sebentar lagi online!
     </div>
+
+    <button id="musicToggle" class="music-btn">🎵 Nyalakan Musik</button>
 
     <div class="footer">
       <span class="brand">🫧 Bubble Pop Mania</span>
@@ -298,32 +354,20 @@
 
   <script>
     // ============================================
-    //  COUNTDOWN KE JAM 16:00 HARI INI
+    //  COUNTDOWN KE JAM 10:00 PAGI
     // ============================================
-
     function updateCountdown() {
       const now = new Date();
       const target = new Date();
+      target.setHours(10, 0, 0, 0);
 
-      // Set target jam 8:00 hari ini
-      target.setHours(8, 0, 0, 0);
-
-      // Kalau udah lewat jam 16:00, target besok jam 16:00
-      if (now > target) {
+      // Kalau jam 10 pagi udah lewat → besok jam 10 pagi
+      if (now >= target) {
         target.setDate(target.getDate() + 1);
       }
 
       const diff = target - now;
 
-      if (diff <= 0) {
-        document.getElementById('targetTime').textContent = 'ONLINE!';
-        document.getElementById('targetTime').style.color = '#00ff88';
-        document.querySelector('.message').innerHTML =
-          'Server udah <strong>ONLINE</strong>! Silakan refresh halaman. 🎉';
-        return;
-      }
-
-      // Hitung jam:menit:detik
       const hours = Math.floor(diff / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
@@ -334,40 +378,120 @@
         String(seconds).padStart(2, '0');
     }
 
-    // Update tiap detik
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
     // ============================================
-    //  PROGRESS BAR (SIMULASI)
+    //  AUTO REFRESH PAS JAM 10:00
     // ============================================
-    let progress = 0;
-    function updateProgress() {
-      if (progress < 100) {
-        progress += Math.random() * 5; // Naik random
-        if (progress > 100) progress = 100;
+    setInterval(() => {
+      const now = new Date();
+      if (now.getHours() === 10 && now.getMinutes() === 0 && now.getSeconds() < 5) {
+        location.reload();
+      }
+    }, 1000);
 
-        document.getElementById('progressFill').style.width = progress + '%';
-        document.getElementById('progressText').textContent = Math.floor(progress) + '%';
+    // ============================================
+    //  BACKGROUND MUSIC — Web Audio API
+    //  Melodi chill, looping, tanpa file eksternal
+    // ============================================
+    let audioCtx = null;
+    let musicPlaying = false;
+    let musicLoopTimer = null;
+    let melodyIndex = 0;
 
-        if (progress < 100) {
-          setTimeout(updateProgress, 2000 + Math.random() * 3000);
+    function initAudio() {
+      if (!audioCtx) {
+        try {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        } catch (e) {
+          console.warn('Audio tidak didukung');
         }
       }
     }
 
-    setTimeout(updateProgress, 1000);
+    function playNote(freq, duration, volume = 0.06, type = 'sine') {
+      if (!audioCtx) return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
 
-    // ============================================
-    //  AUTO REFRESH SAAT WAKTU HABIS
-    // ============================================
-    setInterval(() => {
-      const now = new Date();
-      if (now.getHours() === 16 && now.getMinutes() === 0 && now.getSeconds() < 5) {
-        location.reload();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, now);
+
+      gain.gain.setValueAtTime(0, now);
+      gain.gain.linearRampToValueAtTime(volume, now + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+      osc.connect(gain).connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + duration);
+    }
+
+    // Melodi chill / lo-fi (nada C major)
+    const melody = [
+      // Bar 1
+      { n: 523.25, d: 0.5 },  // C5
+      { n: 587.33, d: 0.5 },  // D5
+      { n: 659.25, d: 0.5 },  // E5
+      { n: 587.33, d: 0.5 },  // D5
+      // Bar 2
+      { n: 523.25, d: 0.5 },  // C5
+      { n: 440.00, d: 0.5 },  // A4
+      { n: 392.00, d: 1.0 },  // G4
+      // Bar 3
+      { n: 440.00, d: 0.5 },  // A4
+      { n: 493.88, d: 0.5 },  // B4
+      { n: 523.25, d: 0.5 },  // C5
+      { n: 493.88, d: 0.5 },  // B4
+      // Bar 4
+      { n: 440.00, d: 0.5 },  // A4
+      { n: 392.00, d: 0.5 },  // G4
+      { n: 349.23, d: 1.0 },  // F4
+    ];
+
+    function playMelody() {
+      if (!musicPlaying) return;
+
+      const note = melody[melodyIndex];
+      playNote(note.n, note.d, 0.06, 'sine');           // Nada utama
+      playNote(note.n / 2, note.d, 0.03, 'triangle');   // Harmonis
+
+      melodyIndex++;
+      if (melodyIndex >= melody.length) melodyIndex = 0;
+
+      musicLoopTimer = setTimeout(playMelody, note.d * 1000);
+    }
+
+    function startMusic() {
+      initAudio();
+      if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+      musicPlaying = true;
+      melodyIndex = 0;
+      playMelody();
+
+      const btn = document.getElementById('musicToggle');
+      btn.textContent = '🔇 Matikan Musik';
+      btn.classList.add('playing');
+    }
+
+    function stopMusic() {
+      musicPlaying = false;
+      if (musicLoopTimer) {
+        clearTimeout(musicLoopTimer);
+        musicLoopTimer = null;
       }
-    }, 1000);
+
+      const btn = document.getElementById('musicToggle');
+      btn.textContent = '🎵 Nyalakan Musik';
+      btn.classList.remove('playing');
+    }
+
+    document.getElementById('musicToggle').addEventListener('click', () => {
+      if (musicPlaying) stopMusic();
+      else startMusic();
+    });
   </script>
 
 </body>
-</html>
+  </html>
