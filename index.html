@@ -263,12 +263,12 @@
 
     <p class="message">
       Mohon maaf, server sedang dalam perbaikan.<br>
-      Kami akan kembali <strong>jam 16:00 sore</strong> hari ini.
+      Kami akan kembali <strong>jam 8 pagi</strong> hari ini.
     </p>
 
     <div class="time-card">
       <div class="time-label">⏰ Kembali Online Jam</div>
-      <div class="time-value" id="targetTime">16:00</div>
+      <div class="time-value" id="targetTime">8:00</div>
     </div>
 
     <div class="progress-wrap">
@@ -305,8 +305,8 @@
       const now = new Date();
       const target = new Date();
 
-      // Set target jam 16:00 hari ini
-      target.setHours(16, 0, 0, 0);
+      // Set target jam 8:00 hari ini
+      target.setHours(8, 0, 0, 0);
 
       // Kalau udah lewat jam 16:00, target besok jam 16:00
       if (now > target) {
