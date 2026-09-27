@@ -3,16 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🔧 Maintenance - Bubble Pop Mania</title>
+  <title>🔧 Maintenance V1 - Bubble Pop Mania</title>
   <style>
-    /* ============================================ */
-    /*  RESET & BASE                                */
-    /* ============================================ */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -33,7 +26,6 @@
       50% { background-position: 100% 50%; }
     }
 
-    /* Bintang berkedip di background */
     body::before {
       content: '';
       position: fixed;
@@ -58,9 +50,6 @@
       to { background-position: 200px 200px; }
     }
 
-    /* ============================================ */
-    /*  CONTAINER                                   */
-    /* ============================================ */
     .container {
       position: relative;
       z-index: 1;
@@ -81,9 +70,25 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ============================================ */
-    /*  GEAR ICON                                   */
-    /* ============================================ */
+    .version-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: linear-gradient(90deg, #ff0066, #ff00e5);
+      color: white;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(255, 0, 229, 0.6);
+      animation: badgePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 229, 0.6); }
+      50%      { box-shadow: 0 0 35px rgba(255, 0, 229, 0.9); }
+    }
+
     .gear-icon {
       font-size: 100px;
       display: inline-block;
@@ -97,9 +102,6 @@
       to { transform: rotate(360deg); }
     }
 
-    /* ============================================ */
-    /*  TITLE                                       */
-    /* ============================================ */
     h1 {
       font-size: 32px;
       margin-bottom: 15px;
@@ -111,13 +113,8 @@
       letter-spacing: 1px;
     }
 
-    @keyframes shine {
-      to { background-position: 200% center; }
-    }
+    @keyframes shine { to { background-position: 200% center; } }
 
-    /* ============================================ */
-    /*  MESSAGE                                     */
-    /* ============================================ */
     .message {
       font-size: 16px;
       color: #ccc;
@@ -131,9 +128,12 @@
       font-size: 18px;
     }
 
-    /* ============================================ */
-    /*  TIME CARD                                   */
-    /* ============================================ */
+    .message .v1-text {
+      color: #ff00e5;
+      font-weight: 900;
+      text-shadow: 0 0 10px #ff00e5;
+    }
+
     .time-card {
       background: rgba(0, 0, 0, 0.5);
       border: 2px solid rgba(0, 245, 255, 0.3);
@@ -165,12 +165,7 @@
       font-family: 'Courier New', monospace;
     }
 
-    /* ============================================ */
-    /*  PROGRESS BAR                                */
-    /* ============================================ */
-    .progress-wrap {
-      margin-bottom: 25px;
-    }
+    .progress-wrap { margin-bottom: 25px; }
 
     .progress-label {
       font-size: 12px;
@@ -204,10 +199,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
       animation: shimmer 1.5s infinite;
     }
 
@@ -216,9 +208,6 @@
       to { transform: translateX(100%); }
     }
 
-    /* ============================================ */
-    /*  INFO BOX                                    */
-    /* ============================================ */
     .info-box {
       background: rgba(255, 234, 0, 0.1);
       border-left: 4px solid #ffea00;
@@ -231,13 +220,8 @@
       line-height: 1.6;
     }
 
-    .info-box strong {
-      color: #ffea00;
-    }
+    .info-box strong { color: #ffea00; }
 
-    /* ============================================ */
-    /*  FOOTER                                      */
-    /* ============================================ */
     .footer {
       font-size: 12px;
       color: #666;
@@ -253,9 +237,6 @@
       margin-bottom: 5px;
     }
 
-    /* ============================================ */
-    /*  MUSIC BUTTON                                */
-    /* ============================================ */
     .music-btn {
       margin-top: 20px;
       padding: 12px 24px;
@@ -284,19 +265,11 @@
       animation: musicPulse 2s ease-in-out infinite;
     }
 
-    .music-btn.playing:hover {
-      background: rgba(255, 234, 0, 0.2);
-      box-shadow: 0 0 20px rgba(255, 234, 0, 0.6);
-    }
-
     @keyframes musicPulse {
       0%, 100% { box-shadow: 0 0 0 rgba(255, 234, 0, 0); }
       50%      { box-shadow: 0 0 25px rgba(255, 234, 0, 0.6); }
     }
 
-    /* ============================================ */
-    /*  RESPONSIVE                                  */
-    /* ============================================ */
     @media (max-width: 500px) {
       .container { padding: 40px 25px; }
       .gear-icon { font-size: 80px; }
@@ -311,12 +284,14 @@
 
   <div class="container">
 
+    <div class="version-badge">V1 MAINTENANCE</div>
+
     <div class="gear-icon">⚙️</div>
 
     <h1>MAINTENANCE</h1>
 
     <p class="message">
-      Mohon maaf, server sedang dalam perbaikan.<br>
+      Mohon maaf, <span class="v1-text">V1</span> sedang dalam perbaikan.<br>
       Kami akan kembali <strong>jam 10:00 pagi</strong> besok.
     </p>
 
@@ -327,7 +302,7 @@
 
     <div class="progress-wrap">
       <div class="progress-label">
-        <span>📊 Progress Update</span>
+        <span>📊 Progress Update V1</span>
         <span id="progressText">40%</span>
       </div>
       <div class="progress-bar">
@@ -336,8 +311,8 @@
     </div>
 
     <div class="info-box">
-      <strong>📢 Informasi:</strong><br>
-      • Server sedang diupdate dengan fitur baru<br>
+      <strong>📢 Informasi V1:</strong><br>
+      • <strong>V1</strong> akan diperbaiki & diupdate dengan fitur baru<br>
       • Data user lo <strong>aman</strong>, tidak akan hilang<br>
       • Live chat tetap aktif jika ada kendala<br>
       • Pantau terus ya, sebentar lagi online!
@@ -352,6 +327,13 @@
 
   </div>
 
+  <!-- Audio Element — Hidden -->
+  <audio id="bgMusic" loop preload="auto" style="display:none;">
+    <source src="https://files.catbox.moe/fklvul.mp4" type="audio/mp4">
+    <source src="https://files.catbox.moe/fklvul.mp4" type="audio/mpeg">
+    Browser lo gak support audio.
+  </audio>
+
   <script>
     // ============================================
     //  COUNTDOWN KE JAM 10:00 PAGI
@@ -360,14 +342,9 @@
       const now = new Date();
       const target = new Date();
       target.setHours(10, 0, 0, 0);
-
-      // Kalau jam 10 pagi udah lewat → besok jam 10 pagi
-      if (now >= target) {
-        target.setDate(target.getDate() + 1);
-      }
+      if (now >= target) target.setDate(target.getDate() + 1);
 
       const diff = target - now;
-
       const hours = Math.floor(diff / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
@@ -392,106 +369,51 @@
     }, 1000);
 
     // ============================================
-    //  BACKGROUND MUSIC — Web Audio API
-    //  Melodi chill, looping, tanpa file eksternal
+    //  BACKGROUND MUSIC — dari link lo
     // ============================================
-    let audioCtx = null;
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
     let musicPlaying = false;
-    let musicLoopTimer = null;
-    let melodyIndex = 0;
 
-    function initAudio() {
-      if (!audioCtx) {
-        try {
-          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        } catch (e) {
-          console.warn('Audio tidak didukung');
-        }
+    // Set volume default (0.3 = 30%)
+    bgMusic.volume = 0.3;
+
+    // Coba autoplay dulu
+    window.addEventListener('load', () => {
+      bgMusic.play().then(() => {
+        // Autoplay berhasil
+        musicPlaying = true;
+        musicToggle.textContent = '🔇 Matikan Musik';
+        musicToggle.classList.add('playing');
+      }).catch(() => {
+        // Autoplay diblokir browser, user harus klik manual
+        console.log('Autoplay diblokir, user perlu klik tombol');
+      });
+    });
+
+    // Toggle button
+    musicToggle.addEventListener('click', () => {
+      if (musicPlaying) {
+        bgMusic.pause();
+        musicPlaying = false;
+        musicToggle.textContent = '🎵 Nyalakan Musik';
+        musicToggle.classList.remove('playing');
+      } else {
+        bgMusic.play().then(() => {
+          musicPlaying = true;
+          musicToggle.textContent = '🔇 Matikan Musik';
+          musicToggle.classList.add('playing');
+        }).catch(e => {
+          alert('Gagal memutar musik: ' + e.message);
+        });
       }
-    }
+    });
 
-    function playNote(freq, duration, volume = 0.06, type = 'sine') {
-      if (!audioCtx) return;
-      const now = audioCtx.currentTime;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-
-      osc.type = type;
-      osc.frequency.setValueAtTime(freq, now);
-
-      gain.gain.setValueAtTime(0, now);
-      gain.gain.linearRampToValueAtTime(volume, now + 0.05);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
-
-      osc.connect(gain).connect(audioCtx.destination);
-      osc.start(now);
-      osc.stop(now + duration);
-    }
-
-    // Melodi chill / lo-fi (nada C major)
-    const melody = [
-      // Bar 1
-      { n: 523.25, d: 0.5 },  // C5
-      { n: 587.33, d: 0.5 },  // D5
-      { n: 659.25, d: 0.5 },  // E5
-      { n: 587.33, d: 0.5 },  // D5
-      // Bar 2
-      { n: 523.25, d: 0.5 },  // C5
-      { n: 440.00, d: 0.5 },  // A4
-      { n: 392.00, d: 1.0 },  // G4
-      // Bar 3
-      { n: 440.00, d: 0.5 },  // A4
-      { n: 493.88, d: 0.5 },  // B4
-      { n: 523.25, d: 0.5 },  // C5
-      { n: 493.88, d: 0.5 },  // B4
-      // Bar 4
-      { n: 440.00, d: 0.5 },  // A4
-      { n: 392.00, d: 0.5 },  // G4
-      { n: 349.23, d: 1.0 },  // F4
-    ];
-
-    function playMelody() {
-      if (!musicPlaying) return;
-
-      const note = melody[melodyIndex];
-      playNote(note.n, note.d, 0.06, 'sine');           // Nada utama
-      playNote(note.n / 2, note.d, 0.03, 'triangle');   // Harmonis
-
-      melodyIndex++;
-      if (melodyIndex >= melody.length) melodyIndex = 0;
-
-      musicLoopTimer = setTimeout(playMelody, note.d * 1000);
-    }
-
-    function startMusic() {
-      initAudio();
-      if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
-      musicPlaying = true;
-      melodyIndex = 0;
-      playMelody();
-
-      const btn = document.getElementById('musicToggle');
-      btn.textContent = '🔇 Matikan Musik';
-      btn.classList.add('playing');
-    }
-
-    function stopMusic() {
-      musicPlaying = false;
-      if (musicLoopTimer) {
-        clearTimeout(musicLoopTimer);
-        musicLoopTimer = null;
-      }
-
-      const btn = document.getElementById('musicToggle');
-      btn.textContent = '🎵 Nyalakan Musik';
-      btn.classList.remove('playing');
-    }
-
-    document.getElementById('musicToggle').addEventListener('click', () => {
-      if (musicPlaying) stopMusic();
-      else startMusic();
+    // Kalau musik selesai (harusnya gak karena loop)
+    bgMusic.addEventListener('ended', () => {
+      if (musicPlaying) bgMusic.play();
     });
   </script>
 
 </body>
-  </html>
+      </html>
